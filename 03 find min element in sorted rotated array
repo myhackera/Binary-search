@@ -1,0 +1,26 @@
+class Solution:
+    
+    #Function to find the minimum element in sorted and rotated array.
+    def minNumber(self, arr,low,high):
+        
+        n = len(arr)
+        ans = 0
+        
+        while low <= high:
+            
+            mid = low+(high-low)//2
+            prev = (mid+n-1)%n
+            nex = (mid+1)%n
+            
+            if arr[mid] <= arr[prev] and arr[mid] <= arr[nex]:
+                return arr[mid]
+            elif arr[mid] <= arr[high]:
+                ans = arr[mid]
+                high = mid-1
+            else:
+                low = mid+1
+        
+        return ans
+        
+        
+TC : O(logn)
