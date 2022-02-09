@@ -1,0 +1,21 @@
+arr = [3,2,10,4,40]
+x = 4 
+l = 0 
+r = len(arr)-1
+
+while l <= r:
+    
+    mid = l + (r-1)//2
+    
+    if mid < r and arr[mid+1] == x:
+        print(mid+1)
+        break
+    if mid > l and arr[mid-1] == x:
+        print(mid-1)
+        break
+    
+    if arr[mid] > x:
+        r =  mid-2
+    else:
+        l = mid+2 
+
