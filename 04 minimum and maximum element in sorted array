@@ -1,0 +1,22 @@
+def minimum(a):
+  mn = 100000
+  low = 0 
+  high = len(a)-1
+  while low <= high:
+      mid = (low+high)//2
+      if a[mid] < mn:
+          mn = a[mid]
+      else:
+          high = mid-1
+  print(mn)
+  
+def maximum(a):
+  low = 0 
+  high = len(a)-1
+  while low <= high:
+      mid = (low+high)//2
+      if a[mid] > mx:
+          mx = a[mid]
+      else:
+          low = mid+1
+  print(mx)
