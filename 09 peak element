@@ -45,7 +45,7 @@ while low <= high:
         print(mid)
         break
     
-    elif a[mid-1] > a[mid]:
+    elif mid-1 >= 0 and a[mid-1] > a[mid]:
         high = mid-1 
     
     else:
