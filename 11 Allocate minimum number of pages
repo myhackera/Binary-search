@@ -1,0 +1,35 @@
+# MOST IMPORTANT
+
+class Solution:
+    
+    def isValid(self, arr, n, m, mid):
+        
+        summ = 0
+        student = 1
+        for i in range(n):
+            summ += arr[i]
+            if summ > mid:
+                student += 1
+                summ = arr[i]
+            if student > m:
+                return False
+        return True
+    
+    def findPages(self,A, N, M):
+        
+        low = max(A)
+        high = sum(A)
+        res = -1 
+        
+        if N < M:
+            return res
+            
+        while low <= high:
+            mid = low + (high-low)//2
+            if self.isValid(A, N, M, mid):
+                res = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+                
+        return res
