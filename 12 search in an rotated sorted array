@@ -31,10 +31,12 @@ class Solution:
         
     def search(self, nums: List[int], target: int) -> int:
         
+        # Find Index of minimum element 
         index = self.minIndex(nums)
         low = 0 
         high = len(nums) - 1
         
+        # Now we can search target element in nums 
         if target >= nums[index] and target <= nums[high]:
             return self.bs(nums, index, high, target)
         else:
