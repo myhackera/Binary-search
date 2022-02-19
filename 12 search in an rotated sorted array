@@ -1,0 +1,42 @@
+class Solution:
+    def bs(self, arr, low, high, key):
+        
+        while low <= high:
+            mid = low + (high-low)//2
+            if arr[mid] == key:
+                return mid
+            elif arr[mid] >= key:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return -1
+    
+    def minIndex(self, arr):
+        
+        n = len(arr)
+        low = 0
+        high = n - 1
+        
+        while low <= high:
+            mid = low + (high-low)//2
+            prev = (mid+n-1)%n
+            nex = (mid+1)%n
+            
+            if arr[mid] <= arr[prev] and arr[mid] <= arr[nex]:
+                return mid
+            elif arr[mid] >= arr[high]:
+                low = mid + 1
+            else:
+                high = mid - 1
+        
+    def search(self, nums: List[int], target: int) -> int:
+        
+        index = self.minIndex(nums)
+        low = 0 
+        high = len(nums) - 1
+        
+        if target >= nums[index] and target <= nums[high]:
+            return self.bs(nums, index, high, target)
+        else:
+            return self.bs(nums, low, index, target)
+        
