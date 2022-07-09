@@ -1,0 +1,26 @@
+def countelementsmallerthanmid(row, ele):
+    l = 0
+    h = len(row)-1
+    while l <= h:
+        mid = (l+h)>>1
+        if row[mid] > ele:
+            h = mid-1
+        else:
+            l = mid+1
+    return l
+
+def getMedian(matrix):
+    low = 0
+    high = 1e8
+    n = len(matrix)
+    m = len(matrix[0])
+    while low <= high:
+        mid = low+(high-low)//2
+        cnt = 0
+        for i in range(n):
+            cnt += countelementsmallerthanmid(matrix[i], mid)
+        if cnt <= (n*m)//2:
+            low = mid+1
+        else:
+            high = mid-1
+    return int(low)
