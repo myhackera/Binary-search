@@ -1,0 +1,30 @@
+class Solution:
+    def isValid(self, arr, m, n, k):
+        
+        summ = 0
+        painter = 1
+        for i in range(n):
+            summ += arr[i]
+            if summ > m:
+                summ = arr[i]
+                painter += 1
+            if painter > k:
+                return False
+                
+        return True
+        
+    def minTime (self, arr, n, k):
+        
+        res = -1
+        low = max(arr)
+        high = sum(arr)
+        
+        while low <= high:
+            mid = (low+high)//2
+            if self.isValid(arr, mid, n, k):
+                res = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+                
+        return res
