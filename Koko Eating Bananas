@@ -1,0 +1,28 @@
+import math
+class Solution:
+    def check(self, piles, ele):
+        
+        cnt = 0
+        for i in range(len(piles)):
+            
+            if piles[i] < ele:
+                cnt += 1
+            else:
+                cnt += math.ceil(piles[i]/ele)
+        return cnt
+        
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        
+        low = 1
+        high = max(piles)
+        
+        while low <= high:
+            
+            ele = low + (high-low)//2
+            
+            if self.check(piles, ele) <= h:
+                high = ele - 1
+            else:
+                low = ele + 1
+                
+        return low
