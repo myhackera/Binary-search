@@ -41,4 +41,31 @@ class Solution:
             return self.bs(nums, index, high, target)
         else:
             return self.bs(nums, low, index, target)
+            
+            
+  updated version
+  ==============>>>
+  
+  class Solution:
+    def search(self, A : list, l : int, h : int, key : int):
+        
+        while l <= h:
+            
+            mid = l + (h-l)//2
+            
+            if A[mid] == key:
+                return mid
+            else:
+                if A[l] <= A[mid]:
+                    if key <= A[mid] and key >= A[l]:
+                        h = mid-1
+                    else:
+                        l = mid+1
+                else:
+                    if key >= A[mid] and A[h] >= key:
+                        l = mid+1 
+                    else:
+                        h = mid-1
+        return -1
+                
         
